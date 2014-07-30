@@ -6,8 +6,6 @@
   <artifactId>soat-immo</artifactId>
   <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>soatflix-dao</module>
-        <module>soatflix-web</module>
         <module>soat-immo-dao</module>
         <module>soat-immo-web</module>
     </modules>
