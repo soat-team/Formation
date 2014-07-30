@@ -13,6 +13,12 @@ tmp/
 local.properties
 .settings/
 .loadpath
+.project
+soat-immo-dao/.classpath
+soat-immo-dao/.project
+soat-immo-web/.project
+soat-immo-web/.classpath
+
 
 # External tool builders
 .externalToolBuilders/
