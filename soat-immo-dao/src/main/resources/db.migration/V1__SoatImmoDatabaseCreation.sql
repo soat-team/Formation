@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS `SoatImmo`.`bien_immobilier` (
   `url_photo` VARCHAR(45) NULL,
   PRIMARY KEY (`idbien_immobilier`))
   ENGINE = InnoDB;
-  
-  
+
+
   CREATE TABLE IF NOT EXISTS `SoatImmo`.`client` (
   `idclient` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NULL,
