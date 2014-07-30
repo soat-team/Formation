@@ -17,8 +17,8 @@ public class PersistenceConfig extends AbstractConfig {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
         driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/SoatImmo");
-        driverManagerDataSource.setUsername("");
-        driverManagerDataSource.setPassword("");
+        driverManagerDataSource.setUsername("root");
+        driverManagerDataSource.setPassword("formation");
         return driverManagerDataSource;
     }
 
