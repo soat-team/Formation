@@ -55,8 +55,8 @@
                 <version>3.0</version>
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/SoatImmo</url>
-                    <user></user>
-                    <password></password>
+                    <user>root</user>
+                    <password>formation</password>
                 </configuration>
             </plugin>
         </plugins>
