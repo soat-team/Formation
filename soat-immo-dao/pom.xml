@@ -47,20 +47,4 @@
             <artifactId>validation-api</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>3.0</version>
-                <configuration>
-                    <url>jdbc:mysql://localhost:3306/SoatImmo</url>
-                    <user>root</user>
-                    <password>formation</password>
-                </configuration>
-            </plugin>
-        </plugins>
-
-    </build>
-
 </project>

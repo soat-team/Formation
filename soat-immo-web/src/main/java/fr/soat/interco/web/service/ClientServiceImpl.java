@@ -4,6 +4,7 @@ import fr.soat.interco.bean.Client;
 import fr.soat.interco.dao.ClientDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
