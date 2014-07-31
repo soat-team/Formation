@@ -10,6 +10,30 @@
     <packaging>war</packaging>
     <name>soat-immo-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
+	
+	
+	<properties>
+
+		<!-- Generic properties -->
+		<java.version>1.6</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- Web -->
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2</jstl.version>
+		<servlet.version>2.5</servlet.version>
+		
+
+		<!-- Spring -->
+		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
+		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
+
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+
+	</properties>
+	
     <dependencies>
         <dependency>
             <groupId>fr.soat.interco</groupId>
