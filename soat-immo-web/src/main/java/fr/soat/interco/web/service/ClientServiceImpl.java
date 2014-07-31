@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by formation on 31/07/14.
+ * Implementation des services pour le client.
  */
 @Service
 public class ClientServiceImpl implements ClientService {
