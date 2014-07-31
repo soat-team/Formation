@@ -1,15 +1,13 @@
 package fr.soat.interco.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Class qui représente un client
  */
 @Entity
+@Table(name = "client")
 public class Client {
 
     @Id

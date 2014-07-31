@@ -1,7 +1,8 @@
-package fr.soat.interco.web.test.config;
+package fr.soat.interco.web.test;
 
 import fr.soat.interco.web.service.AgentService;
 import fr.soat.interco.web.service.ClientService;
+import fr.soat.interco.web.test.config.PersistenceTestConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
