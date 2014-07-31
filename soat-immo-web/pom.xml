@@ -11,9 +11,6 @@
 	<name>soat-immo-web Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
-	<build>
-		<finalName>soat-immo-web</finalName>
-	</build>
 	
     <dependencies>
         <dependency>
@@ -52,6 +49,7 @@
             <artifactId>assertj-core</artifactId>
         </dependency>
     </dependencies>
+    
     <build>
         <finalName>soat-immo-web</finalName>
     </build>
