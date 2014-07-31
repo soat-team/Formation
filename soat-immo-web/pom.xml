@@ -11,86 +11,48 @@
 	<name>soat-immo-web Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
-
-	<properties>
-
-		<!-- Generic properties -->
-		<java.version>1.6</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<!-- Web -->
-		<jsp.version>2.2</jsp.version>
-		<jstl.version>1.2</jstl.version>
-		<servlet.version>2.5</servlet.version>
-
-
-		<!-- Spring -->
-		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
-		<spring-framework.version>3.2.3.RELEASE</spring-framework.version>
-
-		<!-- Test -->
-		<junit.version>4.11</junit.version>
-
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>fr.soat.interco</groupId>
-			<artifactId>soat-immo-dao</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-
-		<!-- Spring MVC -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-
-		<!-- Other Web dependencies -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>${jsp.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-
-
-		<!-- Test -->
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-		</dependency>
-	</dependencies>
 	<build>
 		<finalName>soat-immo-web</finalName>
 	</build>
+	
+    <dependencies>
+        <dependency>
+            <groupId>fr.soat.interco</groupId>
+            <artifactId>soat-immo-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>soat-immo-web</finalName>
+    </build>
 </project>
