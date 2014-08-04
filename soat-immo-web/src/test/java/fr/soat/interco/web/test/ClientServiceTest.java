@@ -7,4 +7,5 @@ import fr.soat.interco.web.test.ParentTests;
  */
 public class ClientServiceTest extends ParentTests {
 
+
 }

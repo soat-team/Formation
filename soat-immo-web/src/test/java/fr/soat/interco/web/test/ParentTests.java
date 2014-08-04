@@ -29,5 +29,4 @@ public class ParentTests {
         Assertions.assertThat(agentService).isNotNull();
         Assertions.assertThat(clientService).isNotNull();
     }
-
 }
