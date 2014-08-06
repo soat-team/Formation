@@ -19,10 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ParentTests {
 
     @Autowired
-    private AgentService agentService;
+    protected AgentService agentService;
 
     @Autowired
-    private ClientService clientService;
+    protected ClientService clientService;
 
     @Test
     public void testIfServiceIsBootStrapped(){
