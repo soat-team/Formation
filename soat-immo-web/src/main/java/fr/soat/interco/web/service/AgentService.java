@@ -26,7 +26,7 @@ public interface AgentService {
     /**
      * @return
      */
-    public Iterable<Agent> findAgents();
+    public Iterable<Agent> findAllAgents();
 
     
     /**

@@ -1,16 +1,10 @@
 package fr.soat.interco.web.test;
 
 import fr.soat.interco.bean.Client;
-import fr.soat.interco.web.test.ParentTests;
 import org.assertj.core.api.Assertions;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Client service tests.
@@ -31,7 +25,6 @@ public class ClientServiceTest extends ParentTests {
         Assertions.assertThat(client).isNotNull();
         Assertions.assertThat(client.getNom()).isEqualTo(clientData.getNom());
         Assertions.assertThat(client.getSalaire()).isEqualTo(clientData.getSalaire());
-        clientService.deleteClient(client);
     }
 
 
@@ -57,7 +50,6 @@ public class ClientServiceTest extends ParentTests {
 
         Iterable<Client> allClients = clientService.findAllClients();
         Assertions.assertThat(allClients).isNotEmpty();
-        Assertions.assertThat(allClients).hasSize(6);
     }
 
 
@@ -78,5 +70,17 @@ public class ClientServiceTest extends ParentTests {
         Client clientById = clientService.findClientById(client.getIdclient());
         Assertions.assertThat(clientById).isEqualTo(client);
         Assertions.assertThat(clientById.getIdclient()).isEqualTo(client.getIdclient());
+    }
+
+    @Test
+    public void testDeleteClient(){
+
+        Client clientByNomAndPrenom = clientService.findClientByNomAndPrenom("Lamrous", "Feriel");
+        Assertions.assertThat(clientByNomAndPrenom.getNom()).isEqualTo("Lamrous");
+        Assertions.assertThat(clientByNomAndPrenom.getPrenom()).isEqualTo("Feriel");
+
+        clientService.deleteClient(clientByNomAndPrenom);
+        Client clientById = clientService.findClientById(clientByNomAndPrenom.getIdclient());
+        Assertions.assertThat(clientById).isNull();
     }
 }

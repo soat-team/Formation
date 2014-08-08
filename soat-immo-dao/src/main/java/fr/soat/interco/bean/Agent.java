@@ -5,12 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "agent")
 public class Agent {
-/*
- *  `idagent` INT NOT NULL,
-  `nom` VARCHAR(45) NOT NULL,
-  `prenom` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idagent`))
- */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idAgent;

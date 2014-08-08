@@ -1,10 +1,9 @@
 package fr.soat.interco.web.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import fr.soat.interco.bean.Agent;
 import fr.soat.interco.dao.AgentDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AgentServiceImpl implements AgentService {
@@ -14,11 +13,11 @@ public class AgentServiceImpl implements AgentService {
 	
 	@Override
 	public Agent findAgentByNomAndPrenom(String nom, String prenom) {
-		return findAgentByNomAndPrenom(nom, prenom);
+		return agentDao.findAgentByNomAndPrenom(nom, prenom);
 	}
 
 	@Override
-	public Iterable<Agent> findAgents() {
+	public Iterable<Agent> findAllAgents() {
 		return agentDao.findAll();
 	}
 
