@@ -12,29 +12,31 @@ public class Visite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idVisite;
 
     @ManyToOne
-    @JoinColumn(name = "IMMOBILIER_ID", nullable = false)
+    @JoinColumn(name = "id_bien_immo", nullable = false)
     private BienImmobilier immobilier;
 
     @ManyToOne
-    @JoinColumn(name = "AGENT_ID", nullable = false)
+    @JoinColumn(name = "id_agent", nullable = false)
     private Agent agent;
 
     @ManyToOne
-    @JoinColumn(name = "CLIENT_ID", nullable = false)
+    @JoinColumn(name = "id_client", nullable = false)
     private Client client;
 
-    private Date dateVisite;
+    private Date heure_debut;
+
+    private Date heure_fin;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getIdVisite() {
+        return idVisite;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdVisite(Integer idVisite) {
+        this.idVisite = idVisite;
     }
 
     public BienImmobilier getImmobilier() {
@@ -61,11 +63,19 @@ public class Visite {
         this.client = client;
     }
 
-    public Date getDateVisite() {
-        return dateVisite;
+    public Date getHeure_debut() {
+        return heure_debut;
     }
 
-    public void setDateVisite(Date dateVisite) {
-        this.dateVisite = dateVisite;
+    public void setHeure_debut(Date heure_debut) {
+        this.heure_debut = heure_debut;
+    }
+
+    public Date getHeure_fin() {
+        return heure_fin;
+    }
+
+    public void setHeure_fin(Date heure_fin) {
+        this.heure_fin = heure_fin;
     }
 }

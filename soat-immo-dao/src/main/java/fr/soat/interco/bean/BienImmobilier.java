@@ -44,7 +44,7 @@ public class BienImmobilier {
 
     private String url_photo;
 
-    @OneToMany(mappedBy = "immobilier")
+    @OneToMany(mappedBy = "immobilier",fetch = FetchType.LAZY)
     private List<Visite> visits;
 
 
