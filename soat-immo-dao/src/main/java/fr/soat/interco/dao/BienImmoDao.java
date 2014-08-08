@@ -18,5 +18,5 @@ public interface BienImmoDao extends CrudRepository<BienImmobilier, Integer> {
      * @return
      */
     @Query("select visits from BienImmobilier c where c.id = ?1")
-    public List<Visite> findVisitsForAgent(Integer id);
+    public List<Visite> findVisitsForBienImmo(Integer id);
 }
