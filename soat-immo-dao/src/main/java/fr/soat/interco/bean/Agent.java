@@ -13,7 +13,7 @@ public class Agent {
     private String nom;
     private String prenom;
 
-    @OneToMany(mappedBy = "agent")
+    @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private List<Visite> visits;
 
     public Integer getIdAgent() {
@@ -22,12 +22,14 @@ public class Agent {
     public void setIdAgent(Integer idAgent) {
         this.idAgent = idAgent;
     }
+
     public String getNom() {
         return nom;
     }
     public void setNom(String nom) {
         this.nom = nom;
     }
+
     public String getPrenom() {
         return prenom;
     }
@@ -38,7 +40,6 @@ public class Agent {
     public List<Visite> getVisits() {
         return visits;
     }
-
     public void setVisits(List<Visite> visits) {
         this.visits = visits;
     }
