@@ -1,13 +1,11 @@
 package fr.soat.interco.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
- * BienImmobilier Dao.
+ * Une entité pour un bien immobilier.
  */
 @Entity
 public class BienImmobilier {
@@ -45,6 +43,9 @@ public class BienImmobilier {
     private Boolean publication_seLoger;
 
     private String url_photo;
+
+    @OneToMany(mappedBy = "immobilier")
+    private List<Visite> visits;
 
 
     public Integer getIdbien_immobiler() {
@@ -173,5 +174,13 @@ public class BienImmobilier {
 
     public void setUrl_photo(String url_photo) {
         this.url_photo = url_photo;
+    }
+
+    public List<Visite> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visite> visits) {
+        this.visits = visits;
     }
 }

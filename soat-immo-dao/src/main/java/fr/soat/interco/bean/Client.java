@@ -2,6 +2,7 @@ package fr.soat.interco.bean;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Class qui représente un client
@@ -20,6 +21,9 @@ public class Client {
     private Double salaire;
     private boolean periodEssai;
     private String criteres_recherche;
+
+    @OneToMany(mappedBy = "client")
+    private List<Visite> visits;
 
     public Integer getIdclient() {
         return idclient;
@@ -75,6 +79,14 @@ public class Client {
 
     public void setCriteres_recherche(String criteres_recherche) {
         this.criteres_recherche = criteres_recherche;
+    }
+
+    public List<Visite> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visite> visits) {
+        this.visits = visits;
     }
 
     @Override
