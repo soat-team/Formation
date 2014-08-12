@@ -1,86 +1,111 @@
 package fr.soat.interco.web.test;
 
 import fr.soat.interco.bean.Client;
+import fr.soat.interco.web.service.ClientService;
 import org.assertj.core.api.Assertions;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
+import java.util.Random;
 
 /**
- * Client service tests.
+ * Client Service Test.
  */
 public class ClientServiceTest extends ParentTests {
 
+    private static final int NB_CLIENTS = 10;
+    private static final String AGENT_NAME = "NOM_";
+    private static final String AGENT_FNAME = "PRENOM_";
+    private final Random random = new Random();
 
-    @Test
-    public void testSaveClient(){
-        Client clientData = new Client();
-        clientData.setDate_de_naissance(new Date());
-        clientData.setNom("Lamrous");
-        clientData.setPrenom("Feriel");
-        clientData.setPeriodEssai(false);
-        clientData.setSalaire(Double.valueOf(37000.35));
+    @Autowired
+    private ClientService clientService;
 
-        Client client = clientService.saveClient(clientData);
-        Assertions.assertThat(client).isNotNull();
-        Assertions.assertThat(client.getNom()).isEqualTo(clientData.getNom());
-        Assertions.assertThat(client.getSalaire()).isEqualTo(clientData.getSalaire());
-    }
+    @Before
+    public void setupData(){
 
+        Assertions.assertThat(clientService).isNotNull();
 
-    @Test
-    public void testFindClientByNomAndPrenom(){
-        Client clientByNomAndPrenom = clientService.findClientByNomAndPrenom("Lamrous", "Feriel");
-        Assertions.assertThat(clientByNomAndPrenom).isNotNull();
-        Assertions.assertThat(clientByNomAndPrenom.getNom()).isEqualTo("Lamrous");
-        Assertions.assertThat(clientByNomAndPrenom.getPrenom()).isEqualTo("Feriel");
-    }
-
-    @Test
-    public void testFindAllClients(){
-        for(int i = 0; i < 5; i++){
-            Client clientData = new Client();
-            clientData.setDate_de_naissance(new Date());
-            clientData.setNom("nom " + i);
-            clientData.setPrenom("prenom" + i);
-            clientData.setPeriodEssai(false);
-            clientData.setSalaire(Double.valueOf(37000.35));
-            clientService.saveClient(clientData);
+        for(int i = 0; i < NB_CLIENTS; i++){
+            Client Client = new Client();
+            Client.setNom(AGENT_NAME + i);
+            Client.setPrenom(AGENT_FNAME + i);
+            clientService.saveClient(Client);
         }
 
+        Iterable<Client> allAgents = clientService.findAllClients();
+        Assertions.assertThat(allAgents).isNotEmpty();
+    }
+
+
+    @Test
+    public void testAllClientsService(){
+
+        int randomId = random.nextInt(NB_CLIENTS);
+
+        //Test save Client
+        Client Client = createClient("Charles", "Dimitri");
+        Client saveClient = clientService.saveClient(Client);
+        Assertions.assertThat(saveClient).isNotNull();
+        Assertions.assertThat(saveClient).isEqualTo(Client);
+
+        //Test findAllAgents
         Iterable<Client> allClients = clientService.findAllClients();
         Assertions.assertThat(allClients).isNotEmpty();
+        Assertions.assertThat(allClients).hasSize(NB_CLIENTS + 1);
+
+        //Test findAgentByNomAndPrenom
+        Client clientByNomAndPrenom =
+                clientService.findClientByNomAndPrenom(AGENT_NAME + randomId,
+                        AGENT_FNAME + randomId);
+        Assertions.assertThat(clientByNomAndPrenom).isNotNull();
+        Assertions.assertThat(clientByNomAndPrenom.getNom()).isEqualTo(AGENT_NAME + randomId);
+        Assertions.assertThat(clientByNomAndPrenom.getPrenom()).isEqualTo(AGENT_FNAME + randomId);
+        Assertions.assertThat(clientByNomAndPrenom.getIdclient()).isNotNull();
+
+        //test findAgentById
+        Client clientById = clientService.findClientById(Integer.valueOf(randomId));
+        Assertions.assertThat(clientById).isNotNull();
+        Assertions.assertThat(clientById.getNom()).isEqualTo(AGENT_NAME + (randomId - 1));
+        Assertions.assertThat(clientById.getPrenom()).isEqualTo(AGENT_FNAME + (randomId - 1));
+        Assertions.assertThat(clientById.getIdclient()).isNotNull();
+
+
+        //test deleteAgent
+        Integer idclient = clientById.getIdclient();
+        clientService.deleteClient(clientById);
+        Client clientById1 = clientService.findClientById(idclient);
+        Assertions.assertThat(clientById1).isNull();
     }
 
 
-    @Test
-    public void testFindClientById(){
+    @After
+    public void dropData(){
+        Iterable<Client> allClients = clientService.findAllClients();
+        Assertions.assertThat(allClients).isNotEmpty();
 
-        Client clientData = new Client();
-        clientData.setDate_de_naissance(new Date());
-        clientData.setNom("Lamrous");
-        clientData.setPrenom("Feriel");
-        clientData.setPeriodEssai(false);
-        clientData.setSalaire(Double.valueOf(37000.35));
+        for(Client Client : allClients){
+            clientService.deleteClient(Client);
+        }
 
-        Client client = clientService.saveClient(clientData);
-
-        Assertions.assertThat(client).isNotNull();
-
-        Client clientById = clientService.findClientById(client.getIdclient());
-        Assertions.assertThat(clientById).isEqualTo(client);
-        Assertions.assertThat(clientById.getIdclient()).isEqualTo(client.getIdclient());
+        allClients = clientService.findAllClients();
+        Assertions.assertThat(allClients).isEmpty();
     }
 
-    @Test
-    public void testDeleteClient(){
 
-        Client clientByNomAndPrenom = clientService.findClientByNomAndPrenom("Lamrous", "Feriel");
-        Assertions.assertThat(clientByNomAndPrenom.getNom()).isEqualTo("Lamrous");
-        Assertions.assertThat(clientByNomAndPrenom.getPrenom()).isEqualTo("Feriel");
-
-        clientService.deleteClient(clientByNomAndPrenom);
-        Client clientById = clientService.findClientById(clientByNomAndPrenom.getIdclient());
-        Assertions.assertThat(clientById).isNull();
+    /*
+    *
+    * ECRIRE CAS de test non nominaux pour chaque méthode qui échoue
+    * ****************************************
+     */
+     
+    private Client createClient(String nom, String prenom){
+        Client Client = new Client();
+        Client.setNom(nom);
+        Client.setPrenom(prenom);
+        return Client;
     }
+
 }

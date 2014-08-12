@@ -8,6 +8,9 @@ import fr.soat.interco.bean.Agent;
 
 import java.util.List;
 
+/**
+ * Dao pour accéder aux agents.
+ */
 public interface AgentDao extends CrudRepository<Agent, Integer>{
 	
 	 @Query("from Agent a where a.nom = ?1 and a.prenom = ?2")

@@ -14,7 +14,8 @@ public class BienImmobilier {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idbien_immobiler;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TypeImmo type;
 
     private String adresse;
 
@@ -56,11 +57,11 @@ public class BienImmobilier {
         this.idbien_immobiler = idbien_immobiler;
     }
 
-    public String getType() {
+    public TypeImmo getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeImmo type) {
         this.type = type;
     }
 
@@ -182,5 +183,35 @@ public class BienImmobilier {
 
     public void setVisits(List<Visite> visits) {
         this.visits = visits;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BienImmobilier that = (BienImmobilier) o;
+
+        if (etage != that.etage) return false;
+        if (nb_pieces != that.nb_pieces) return false;
+        if (adresse != null ? !adresse.equals(that.adresse) : that.adresse != null) return false;
+        if (charges != null ? !charges.equals(that.charges) : that.charges != null) return false;
+        if (loyer != null ? !loyer.equals(that.loyer) : that.loyer != null) return false;
+        if (surface != null ? !surface.equals(that.surface) : that.surface != null) return false;
+        if (type != that.type) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type != null ? type.hashCode() : 0;
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
+        result = 31 * result + (surface != null ? surface.hashCode() : 0);
+        result = 31 * result + nb_pieces;
+        result = 31 * result + etage;
+        result = 31 * result + (loyer != null ? loyer.hashCode() : 0);
+        result = 31 * result + (charges != null ? charges.hashCode() : 0);
+        return result;
     }
 }

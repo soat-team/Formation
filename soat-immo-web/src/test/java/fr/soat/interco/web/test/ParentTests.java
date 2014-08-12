@@ -16,23 +16,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes =  WebConfigTest.class)
 public class ParentTests {
 
-    @Autowired
-    protected AgentService agentService;
 
-    @Autowired
-    protected ClientService clientService;
-
-    @Autowired
-    protected BienImmoService bienImmoService;
-
-    @Autowired
-    protected VisiteService visiteService;
-
-    @Test
-    public void testIfServiceIsBootStrapped(){
-        Assertions.assertThat(agentService).isNotNull();
-        Assertions.assertThat(clientService).isNotNull();
-        Assertions.assertThat(bienImmoService).isNotNull();
-        Assertions.assertThat(visiteService).isNotNull();
-    }
 }

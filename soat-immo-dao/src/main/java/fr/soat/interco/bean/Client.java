@@ -110,4 +110,16 @@ public class Client {
         result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
         return result;
     }
+
+    /**
+     *
+     * @return always the name
+     */
+    public String getFullname() {
+        if(nom == null) {
+            return prenom;
+        } else {
+            return prenom +" "+ nom;
+        }
+    }
 }
