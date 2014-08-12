@@ -1,7 +1,8 @@
-package fr.soat.interco.web.test;
+package fr.soat.interco.web.test.service;
 
 import fr.soat.interco.bean.Client;
 import fr.soat.interco.web.service.ClientService;
+import fr.soat.interco.web.test.ParentTests;
 import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Before;
