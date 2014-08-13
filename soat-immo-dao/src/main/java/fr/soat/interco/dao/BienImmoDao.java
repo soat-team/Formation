@@ -5,13 +5,16 @@ import fr.soat.interco.bean.TypeImmo;
 import fr.soat.interco.bean.Visite;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
 /**
  * Dao interface to BienImmo
  */
-public interface BienImmoDao extends CrudRepository<BienImmobilier, Integer> {
+@RepositoryRestResource(collectionResourceRel = "bien", path = "bien")
+public interface BienImmoDao extends PagingAndSortingRepository<BienImmobilier, Integer> {
 
     /**
      * Retrieves all the visits for a client.

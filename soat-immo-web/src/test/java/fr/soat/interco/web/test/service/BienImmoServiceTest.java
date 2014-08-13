@@ -42,7 +42,7 @@ public class BienImmoServiceTest extends ParentTests {
         BienImmobilier bienImmobilier = new BienImmobilier();
         bienImmobilier.setAdresse(adresse);
         bienImmobilier.setAnnonce_active(true);
-        bienImmobilier.setAscenceur(Boolean.TRUE);
+        bienImmobilier.setAscenseur(Boolean.TRUE);
         bienImmobilier.setEtage(etage);
         bienImmobilier.setNb_pieces(nbPieces);
         bienImmobilier.setDate_disponibilite(disponibilite);
@@ -90,9 +90,9 @@ public class BienImmoServiceTest extends ParentTests {
 
         //test findBienImmoById
         bienImmobilier = bienImmoService
-                .findBienImmoById(bienImmobilier.getIdbien_immobiler());
+                .findBienImmoById(bienImmobilier.getIdbien_immobilier());
         Assertions.assertThat(bienImmobilier).isNotNull();
-        Assertions.assertThat(bienImmobilier.getIdbien_immobiler()).isNotNull();
+        Assertions.assertThat(bienImmobilier.getIdbien_immobilier()).isNotNull();
 
         //test findAllBienImmo
         Iterable<BienImmobilier> allBienImmo = bienImmoService.findAllBienImmo();
@@ -111,7 +111,7 @@ public class BienImmoServiceTest extends ParentTests {
         Assertions.assertThat(immoByType).hasSize(NB_BIEN_IMMO);
 
         //test delete bienImmo
-        Integer idbien_immobiler = bienImmobilier.getIdbien_immobiler();
+        Integer idbien_immobiler = bienImmobilier.getIdbien_immobilier();
         bienImmoService.deleteBienImmo(bienImmobilier);
         BienImmobilier bienImmoById = bienImmoService.findBienImmoById(idbien_immobiler);
         Assertions.assertThat(bienImmoById).isNull();

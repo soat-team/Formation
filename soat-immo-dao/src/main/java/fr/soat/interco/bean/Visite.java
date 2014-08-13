@@ -8,6 +8,7 @@ import java.util.Date;
  * Une visite concerne un agent, un client et un bien Immobilier.
  */
 @Entity
+@Table(name = "visite")
 public class Visite {
 
     @Id

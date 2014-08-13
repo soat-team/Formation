@@ -37,7 +37,7 @@ public class VisitModel {
             this.idClient = visite.getClient().getIdclient();
         }
         if(visite.getImmobilier() != null){
-            this.idBienImmobilier = visite.getImmobilier().getIdbien_immobiler();
+            this.idBienImmobilier = visite.getImmobilier().getIdbien_immobilier();
         }
 
         this.heure_debut = visite.getHeure_debut();
@@ -58,7 +58,7 @@ public class VisitModel {
 
         if(this.idBienImmobilier != null){
             BienImmobilier bienImmobilier = new BienImmobilier();
-            bienImmobilier.setIdbien_immobiler(this.idBienImmobilier);
+            bienImmobilier.setIdbien_immobilier(this.idBienImmobilier);
             visite.setImmobilier(bienImmobilier);
         }
 

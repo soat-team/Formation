@@ -5,12 +5,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.soat.interco.bean.Agent;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import javax.xml.ws.ResponseWrapper;
 import java.util.List;
 
 /**
  * Dao pour accéder aux agents.
  */
+@RepositoryRestResource(collectionResourceRel = "agent", path = "agent")
 public interface AgentDao extends CrudRepository<Agent, Integer>{
 	
 	 @Query("from Agent a where a.nom = ?1 and a.prenom = ?2")

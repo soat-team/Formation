@@ -12,7 +12,7 @@ public class BienImmobilier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idbien_immobiler;
+    private Integer idbien_immobilier;
 
     @Enumerated(EnumType.STRING)
     private TypeImmo type;
@@ -25,7 +25,7 @@ public class BienImmobilier {
 
     private int etage;
 
-    private Boolean ascenceur;
+    private Boolean ascenseur;
 
     private String type_chauffage;
 
@@ -48,13 +48,12 @@ public class BienImmobilier {
     @OneToMany(mappedBy = "immobilier",fetch = FetchType.LAZY)
     private List<Visite> visits;
 
-
-    public Integer getIdbien_immobiler() {
-        return idbien_immobiler;
+    public Integer getIdbien_immobilier() {
+        return idbien_immobilier;
     }
 
-    public void setIdbien_immobiler(Integer idbien_immobiler) {
-        this.idbien_immobiler = idbien_immobiler;
+    public void setIdbien_immobilier(Integer idbien_immobilier) {
+        this.idbien_immobilier = idbien_immobilier;
     }
 
     public TypeImmo getType() {
@@ -97,12 +96,12 @@ public class BienImmobilier {
         this.etage = etage;
     }
 
-    public Boolean getAscenceur() {
-        return ascenceur;
+    public Boolean getAscenseur() {
+        return ascenseur;
     }
 
-    public void setAscenceur(Boolean ascenceur) {
-        this.ascenceur = ascenceur;
+    public void setAscenseur(Boolean ascenseur) {
+        this.ascenseur = ascenseur;
     }
 
     public String getType_chauffage() {
