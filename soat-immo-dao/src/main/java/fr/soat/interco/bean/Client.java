@@ -8,7 +8,6 @@ import java.util.List;
  * Class qui représente un client
  */
 @Entity
-@Table(name = "client")
 public class Client {
 
     @Id

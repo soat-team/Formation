@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 /**
  * Created by formation on 08/08/14.
  */
-@RepositoryRestResource(collectionResourceRel = "visite", path = "client")
+@RepositoryRestResource(collectionResourceRel = "visit", path = "visit")
 public interface VisiteDao extends CrudRepository<Visite, Integer> {
 
     /**
