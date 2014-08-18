@@ -30,7 +30,8 @@ public class BienImmobilier {
 
     private Boolean ascenseur;
 
-    private String typeChauffage;
+    @Enumerated(EnumType.STRING)
+    private TypeChauffage typeChauffage;
 
     private String typeProdEauChaude;
 
@@ -105,12 +106,20 @@ public class BienImmobilier {
         this.ascenseur = ascenseur;
     }
 
-    public String getTypeChauffage() {
+    public TypeChauffage getTypeChauffage() {
         return typeChauffage;
     }
 
-    public void setTypeChauffage(String typeChauffage) {
+    public void setTypeChauffage(TypeChauffage typeChauffage) {
         this.typeChauffage = typeChauffage;
+    }
+
+    public Date getDateDisponibilite() {
+        return dateDisponibilite;
+    }
+
+    public void setDateDisponibilite(Date dateDisponibilite) {
+        this.dateDisponibilite = dateDisponibilite;
     }
 
     public String getTypeProdEauChaude() {
