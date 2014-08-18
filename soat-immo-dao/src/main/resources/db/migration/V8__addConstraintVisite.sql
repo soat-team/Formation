@@ -1,0 +1,1 @@
+ALTER TABLE Visite ADD FOREIGN KEY (id_bien_immo) REFERENCES BienImmobilier(idBienImmo);

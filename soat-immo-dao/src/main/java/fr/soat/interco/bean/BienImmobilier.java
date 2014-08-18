@@ -25,9 +25,9 @@ public class BienImmobilier {
 
     private String surface;
 
-    private int nbPieces;
+    private short nbPieces;
 
-    private int etage;
+    private short etage;
 
     private Boolean ascenseur;
 
@@ -83,19 +83,19 @@ public class BienImmobilier {
         this.surface = surface;
     }
 
-    public int getNbPieces() {
+    public short getNbPieces() {
         return nbPieces;
     }
 
-    public void setNbPieces(int nbPieces) {
+    public void setNbPieces(short nbPieces) {
         this.nbPieces = nbPieces;
     }
 
-    public int getEtage() {
+    public short getEtage() {
         return etage;
     }
 
-    public void setEtage(int etage) {
+    public void setEtage(short etage) {
         this.etage = etage;
     }
 
@@ -146,7 +146,6 @@ public class BienImmobilier {
     public void setCharges(Double charges) {
         this.charges = charges;
     }
-
 
     public Boolean getActive() {
         return active;

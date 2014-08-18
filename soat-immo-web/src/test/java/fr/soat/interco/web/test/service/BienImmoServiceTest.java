@@ -37,7 +37,7 @@ public class BienImmoServiceTest extends ParentTests {
      * Creates a new Bien immo
      * @return
      */
-    private BienImmobilier createBienImmo(String adresse, int etage, int nbPieces, LocalDate disponibilite,
+    private BienImmobilier createBienImmo(String adresse, short etage, short nbPieces, LocalDate disponibilite,
                                           double charges, double loyer, String surface){
         BienImmobilier bienImmobilier = new BienImmobilier();
         bienImmobilier.setAdresse(adresse);
@@ -58,8 +58,8 @@ public class BienImmoServiceTest extends ParentTests {
     public void setupData(){
         Assertions.assertThat(bienImmoService).isNotNull();
         for(int i = 0; i < NB_BIEN_IMMO; i++){
-            int etage = random.nextInt(NB_BIEN_IMMO);
-            int nbPieces = random.nextInt(NB_BIEN_IMMO);
+            short etage = (short)random.nextInt(NB_BIEN_IMMO);
+            short nbPieces = (short)random.nextInt(NB_BIEN_IMMO);
             BienImmobilier bienImmo = createBienImmo(ADRESS_IMMO + i,
                     etage, nbPieces, today, nbPieces * CHARGE_CST,
                     nbPieces * LOYER_CST, SURFACE);
@@ -78,8 +78,8 @@ public class BienImmoServiceTest extends ParentTests {
         List<BienImmobilier> bienImmobiliers = bienImmoService.findBienImmoByAdresse(ADRESS_IMMO);
         Assertions.assertThat(bienImmobiliers).isNotEmpty();
 
-        int etage = random.nextInt(NB_BIEN_IMMO);
-        int nbPieces = random.nextInt(NB_BIEN_IMMO);
+        short etage = (short)random.nextInt(NB_BIEN_IMMO);
+        short nbPieces = (short)random.nextInt(NB_BIEN_IMMO);
         BienImmobilier bienImmo = createBienImmo(ADRESS_IMMO + randomId,
                 etage, nbPieces, today, nbPieces * CHARGE_CST,
                 nbPieces * LOYER_CST, SURFACE);
