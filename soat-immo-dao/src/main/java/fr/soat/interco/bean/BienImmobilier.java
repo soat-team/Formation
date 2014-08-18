@@ -1,7 +1,7 @@
 package fr.soat.interco.bean;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -12,48 +12,49 @@ public class BienImmobilier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idbien_immobilier;
+    private Integer idBienImmo;
 
     @Enumerated(EnumType.STRING)
     private TypeImmo type;
+
+    @OneToMany(mappedBy = "immobilier",fetch = FetchType.LAZY)
+    private List<Visite> visits;
 
     private String adresse;
 
     private String surface;
 
-    private int nb_pieces;
+    private int nbPieces;
 
     private int etage;
 
     private Boolean ascenseur;
 
-    private String type_chauffage;
+    private String typeChauffage;
 
-    private String type_production_eau_chaude;
+    private String typeProdEauChaude;
 
     private Double loyer;
 
     private Double charges;
 
-    private Date date_disponibilite;
+    private Date dateDisponibilite;
 
-    private Boolean annonce_active;
+    private Boolean active;
 
-    private Boolean publication_site_web;
+    private Boolean published;
 
-    private Boolean publication_seLoger;
+    private Boolean publishedSeLoger;
 
     private String url_photo;
 
-    @OneToMany(mappedBy = "immobilier",fetch = FetchType.LAZY)
-    private List<Visite> visits;
 
-    public Integer getIdbien_immobilier() {
-        return idbien_immobilier;
+    public Integer getIdBienImmo() {
+        return idBienImmo;
     }
 
-    public void setIdbien_immobilier(Integer idbien_immobilier) {
-        this.idbien_immobilier = idbien_immobilier;
+    public void setIdBienImmo(Integer idBienImmo) {
+        this.idBienImmo = idBienImmo;
     }
 
     public TypeImmo getType() {
@@ -80,12 +81,12 @@ public class BienImmobilier {
         this.surface = surface;
     }
 
-    public int getNb_pieces() {
-        return nb_pieces;
+    public int getNbPieces() {
+        return nbPieces;
     }
 
-    public void setNb_pieces(int nb_pieces) {
-        this.nb_pieces = nb_pieces;
+    public void setNbPieces(int nbPieces) {
+        this.nbPieces = nbPieces;
     }
 
     public int getEtage() {
@@ -104,20 +105,20 @@ public class BienImmobilier {
         this.ascenseur = ascenseur;
     }
 
-    public String getType_chauffage() {
-        return type_chauffage;
+    public String getTypeChauffage() {
+        return typeChauffage;
     }
 
-    public void setType_chauffage(String type_chauffage) {
-        this.type_chauffage = type_chauffage;
+    public void setTypeChauffage(String typeChauffage) {
+        this.typeChauffage = typeChauffage;
     }
 
-    public String getType_production_eau_chaude() {
-        return type_production_eau_chaude;
+    public String getTypeProdEauChaude() {
+        return typeProdEauChaude;
     }
 
-    public void setType_production_eau_chaude(String type_production_eau_chaude) {
-        this.type_production_eau_chaude = type_production_eau_chaude;
+    public void setTypeProdEauChaude(String typeProdEauChaude) {
+        this.typeProdEauChaude = typeProdEauChaude;
     }
 
     public Double getLoyer() {
@@ -136,36 +137,29 @@ public class BienImmobilier {
         this.charges = charges;
     }
 
-    public Date getDate_disponibilite() {
-        return date_disponibilite;
+
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setDate_disponibilite(Date date_disponibilite) {
-        this.date_disponibilite = date_disponibilite;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
-    public Boolean getAnnonce_active() {
-        return annonce_active;
+    public Boolean getPublished() {
+        return published;
     }
 
-    public void setAnnonce_active(Boolean annonce_active) {
-        this.annonce_active = annonce_active;
+    public void setPublished(Boolean published) {
+        this.published = published;
     }
 
-    public Boolean getPublication_site_web() {
-        return publication_site_web;
+    public Boolean getPublishedSeLoger() {
+        return publishedSeLoger;
     }
 
-    public void setPublication_site_web(Boolean publication_site_web) {
-        this.publication_site_web = publication_site_web;
-    }
-
-    public Boolean getPublication_seLoger() {
-        return publication_seLoger;
-    }
-
-    public void setPublication_seLoger(Boolean publication_seLoger) {
-        this.publication_seLoger = publication_seLoger;
+    public void setPublishedSeLoger(Boolean publishedSeLoger) {
+        this.publishedSeLoger = publishedSeLoger;
     }
 
     public String getUrl_photo() {
@@ -182,35 +176,5 @@ public class BienImmobilier {
 
     public void setVisits(List<Visite> visits) {
         this.visits = visits;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        BienImmobilier that = (BienImmobilier) o;
-
-        if (etage != that.etage) return false;
-        if (nb_pieces != that.nb_pieces) return false;
-        if (adresse != null ? !adresse.equals(that.adresse) : that.adresse != null) return false;
-        if (charges != null ? !charges.equals(that.charges) : that.charges != null) return false;
-        if (loyer != null ? !loyer.equals(that.loyer) : that.loyer != null) return false;
-        if (surface != null ? !surface.equals(that.surface) : that.surface != null) return false;
-        if (type != that.type) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = type != null ? type.hashCode() : 0;
-        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
-        result = 31 * result + (surface != null ? surface.hashCode() : 0);
-        result = 31 * result + nb_pieces;
-        result = 31 * result + etage;
-        result = 31 * result + (loyer != null ? loyer.hashCode() : 0);
-        result = 31 * result + (charges != null ? charges.hashCode() : 0);
-        return result;
     }
 }

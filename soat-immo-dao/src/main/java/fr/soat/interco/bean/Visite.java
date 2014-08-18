@@ -19,17 +19,15 @@ public class Visite {
     private BienImmobilier immobilier;
 
     @ManyToOne
-    @JoinColumn(name = "id_agent", nullable = false)
+    @JoinColumn(name = "id_agent")
     private Agent agent;
 
     @ManyToOne
     @JoinColumn(name = "id_client", nullable = false)
     private Client client;
 
-    private Date heure_debut;
-
-    private Date heure_fin;
-
+    @Embedded
+    private Creneau creneau;
 
     public Integer getIdVisite() {
         return idVisite;
@@ -63,19 +61,15 @@ public class Visite {
         this.client = client;
     }
 
-    public Date getHeure_debut() {
-        return heure_debut;
+    public boolean isConfirmed(){
+        return agent != null;
     }
 
-    public void setHeure_debut(Date heure_debut) {
-        this.heure_debut = heure_debut;
+    public Creneau getCreneau() {
+        return creneau;
     }
 
-    public Date getHeure_fin() {
-        return heure_fin;
-    }
-
-    public void setHeure_fin(Date heure_fin) {
-        this.heure_fin = heure_fin;
+    public void setCreneau(Creneau creneau) {
+        this.creneau = creneau;
     }
 }

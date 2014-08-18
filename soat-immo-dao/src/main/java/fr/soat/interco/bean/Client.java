@@ -16,10 +16,10 @@ public class Client {
 
     private String nom;
     private String prenom;
-    private Date date_de_naissance;
+    private Date dateNaissance;
     private Double salaire;
     private boolean periodEssai;
-    private String criteres_recherche;
+
 
     @OneToMany(mappedBy = "client")
     private List<Visite> visits;
@@ -64,20 +64,12 @@ public class Client {
         this.periodEssai = periodEssai;
     }
 
-    public Date getDate_de_naissance() {
-        return date_de_naissance;
+    public Date getDateNaissance() {
+        return dateNaissance;
     }
 
-    public void setDate_de_naissance(Date date_de_naissance) {
-        this.date_de_naissance = date_de_naissance;
-    }
-
-    public String getCriteres_recherche() {
-        return criteres_recherche;
-    }
-
-    public void setCriteres_recherche(String criteres_recherche) {
-        this.criteres_recherche = criteres_recherche;
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
     }
 
     public List<Visite> getVisits() {
