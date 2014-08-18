@@ -14,7 +14,6 @@ import java.util.List;
 /**
  * Dao pour accéder aux agents.
  */
-@RepositoryRestResource(collectionResourceRel = "agent", path = "agent")
 public interface AgentDao extends PagingAndSortingRepository<Agent, Integer> {
 	
 	 @Query("from Agent a where a.nom = ?1 and a.prenom = ?2")

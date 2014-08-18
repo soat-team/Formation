@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * Interface de Dao pour accéder aux clients
  */
-@RepositoryRestResource(collectionResourceRel = "client", path = "client")
 public interface ClientDao extends PagingAndSortingRepository<Client, Integer> {
 
     /**
