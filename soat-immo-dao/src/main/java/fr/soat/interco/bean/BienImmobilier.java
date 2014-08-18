@@ -1,7 +1,8 @@
 package fr.soat.interco.bean;
 
+import org.joda.time.LocalDate;
+
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -39,7 +40,7 @@ public class BienImmobilier {
 
     private Double charges;
 
-    private Date dateDisponibilite;
+    private LocalDate dateDisponibilite;
 
     private Boolean active;
 
@@ -114,11 +115,11 @@ public class BienImmobilier {
         this.typeChauffage = typeChauffage;
     }
 
-    public Date getDateDisponibilite() {
+    public LocalDate getDateDisponibilite() {
         return dateDisponibilite;
     }
 
-    public void setDateDisponibilite(Date dateDisponibilite) {
+    public void setDateDisponibilite(LocalDate dateDisponibilite) {
         this.dateDisponibilite = dateDisponibilite;
     }
 

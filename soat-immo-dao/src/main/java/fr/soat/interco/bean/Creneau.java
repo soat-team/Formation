@@ -1,42 +1,41 @@
 package fr.soat.interco.bean;
 
+import org.hibernate.annotations.Columns;
+import org.hibernate.annotations.Type;
+import org.joda.time.Interval;
+import org.joda.time.LocalDate;
+
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.sql.Date;
-import java.sql.Time;
+
 
 /**
- * Created by formation on 18/08/14.
+ *
  */
 @Embeddable
 public class Creneau {
 
-    private Date dateVisite;
+    @Column
+    @Type(type="org.joda.time.contrib.hibernate.PersistentLocalDate")
+    private LocalDate dateVisite;
 
-    private Time heureDebut;
+    @Columns(columns={@Column(name="heureDebut"),@Column(name="heureFin")})
+    @Type(type="org.joda.time.contrib.hibernate.PersistentInterval")
+    private Interval duration;
 
-    private Time heureFin;
-
-    public Date getDateVisite() {
+    public LocalDate getDateVisite() {
         return dateVisite;
     }
 
-    public void setDateVisite(Date dateVisite) {
+    public void setDateVisite(LocalDate dateVisite) {
         this.dateVisite = dateVisite;
     }
 
-    public Time getHeureDebut() {
-        return heureDebut;
+    public Interval getDuration() {
+        return duration;
     }
 
-    public void setHeureDebut(Time heureDebut) {
-        this.heureDebut = heureDebut;
-    }
-
-    public Time getHeureFin() {
-        return heureFin;
-    }
-
-    public void setHeureFin(Time heureFin) {
-        this.heureFin = heureFin;
+    public void setDuration(Interval duration) {
+        this.duration = duration;
     }
 }

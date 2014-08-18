@@ -5,12 +5,12 @@ import fr.soat.interco.bean.TypeImmo;
 import fr.soat.interco.web.service.BienImmoService;
 import fr.soat.interco.web.test.ParentTests;
 import org.assertj.core.api.Assertions;
+import org.joda.time.LocalDate;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -24,7 +24,7 @@ public class BienImmoServiceTest extends ParentTests {
 
     private static final String ADRESS_IMMO = "ADRESSE_";
     private static final String SURFACE = "SURFACE_";
-    private final Date today = new Date();
+    private final LocalDate today = LocalDate.now();
     private final static Double LOYER_CST = 350.0;
     private final static Double CHARGE_CST = 50.0;
 
@@ -37,19 +37,19 @@ public class BienImmoServiceTest extends ParentTests {
      * Creates a new Bien immo
      * @return
      */
-    private BienImmobilier createBienImmo(String adresse, int etage, int nbPieces, Date disponibilite,
+    private BienImmobilier createBienImmo(String adresse, int etage, int nbPieces, LocalDate disponibilite,
                                           double charges, double loyer, String surface){
         BienImmobilier bienImmobilier = new BienImmobilier();
         bienImmobilier.setAdresse(adresse);
-        bienImmobilier.setAnnonce_active(true);
+        bienImmobilier.setActive(true);
         bienImmobilier.setAscenseur(Boolean.TRUE);
         bienImmobilier.setEtage(etage);
-        bienImmobilier.setNb_pieces(nbPieces);
-        bienImmobilier.setDate_disponibilite(disponibilite);
+        bienImmobilier.setNbPieces(nbPieces);
+        bienImmobilier.setDateDisponibilite(disponibilite);
         bienImmobilier.setCharges(charges);
         bienImmobilier.setLoyer(loyer);
-        bienImmobilier.setPublication_seLoger(false);
-        bienImmobilier.setPublication_site_web(false);
+        bienImmobilier.setPublishedSeLoger(false);
+        bienImmobilier.setPublished(false);
         return bienImmobilier;
     }
 
@@ -90,9 +90,9 @@ public class BienImmoServiceTest extends ParentTests {
 
         //test findBienImmoById
         bienImmobilier = bienImmoService
-                .findBienImmoById(bienImmobilier.getIdbien_immobilier());
+                .findBienImmoById(bienImmobilier.getIdBienImmo());
         Assertions.assertThat(bienImmobilier).isNotNull();
-        Assertions.assertThat(bienImmobilier.getIdbien_immobilier()).isNotNull();
+        Assertions.assertThat(bienImmobilier.getIdBienImmo()).isNotNull();
 
         //test findAllBienImmo
         Iterable<BienImmobilier> allBienImmo = bienImmoService.findAllBienImmo();
@@ -111,7 +111,7 @@ public class BienImmoServiceTest extends ParentTests {
         Assertions.assertThat(immoByType).hasSize(NB_BIEN_IMMO);
 
         //test delete bienImmo
-        Integer idbien_immobiler = bienImmobilier.getIdbien_immobilier();
+        Integer idbien_immobiler = bienImmobilier.getIdBienImmo();
         bienImmoService.deleteBienImmo(bienImmobilier);
         BienImmobilier bienImmoById = bienImmoService.findBienImmoById(idbien_immobiler);
         Assertions.assertThat(bienImmoById).isNull();
