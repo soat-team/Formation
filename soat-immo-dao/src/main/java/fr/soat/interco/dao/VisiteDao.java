@@ -6,7 +6,6 @@ import fr.soat.interco.bean.Client;
 import fr.soat.interco.bean.Visite;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
  * Created by formation on 08/08/14.
