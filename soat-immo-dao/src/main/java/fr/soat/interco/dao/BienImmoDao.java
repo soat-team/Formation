@@ -22,7 +22,7 @@ public interface BienImmoDao extends PagingAndSortingRepository<BienImmobilier, 
      * @return
      */
     @Query("select visits from BienImmobilier c where c.idBien = ?1")
-    public List<Visite> findVisitsForBienImmo(Integer id);
+    public List<Visite> findVisitsForBienImmo(Long id);
 
 
     @Query("from BienImmobilier bi where bi.type = ?1")

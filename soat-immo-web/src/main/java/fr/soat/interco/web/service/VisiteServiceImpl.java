@@ -18,7 +18,7 @@ public class VisiteServiceImpl implements VisiteService {
     private VisiteDao visiteDao;
 
     @Override
-    public Visite findVisitById(Integer id) {
+    public Visite findVisitById(Long id) {
         return visiteDao.findOne(id);
     }
 
@@ -28,17 +28,17 @@ public class VisiteServiceImpl implements VisiteService {
     }
 
     @Override
-    public Client findClientForVisit(Integer id) {
+    public Client findClientForVisit(Long id) {
         return visiteDao.findClientForVisit(id);
     }
 
     @Override
-    public Agent findAgentForVisit(Integer id) {
+    public Agent findAgentForVisit(Long id) {
         return visiteDao.findAgentForVisit(id);
     }
 
     @Override
-    public BienImmobilier findBienImmoForVisit(Integer id) {
+    public BienImmobilier findBienImmoForVisit(Long id) {
         return visiteDao.findBienImmoForVisit(id);
     }
 }

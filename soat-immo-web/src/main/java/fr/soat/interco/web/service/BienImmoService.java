@@ -18,7 +18,7 @@ public interface BienImmoService {
      * @param id
      * @return
      */
-    public List<Visite> findVisitsForBienImmo(Integer id);
+    public List<Visite> findVisitsForBienImmo(Long id);
 
 
     /**
@@ -56,5 +56,10 @@ public interface BienImmoService {
      */
     public List<BienImmobilier> findBienImmoByAdresse(String adresse);
 
-    public BienImmobilier findBienImmoById(Integer idbienImmobiler);
+    /**
+     *
+     * @param idbienImmobiler
+     * @return
+     */
+    public BienImmobilier findBienImmoById(Long idbienImmobiler);
 }

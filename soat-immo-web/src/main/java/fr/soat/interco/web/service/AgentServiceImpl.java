@@ -27,7 +27,7 @@ public class AgentServiceImpl implements AgentService {
 	}
 
 	@Override
-	public Agent findAgentById(Integer id) {
+	public Agent findAgentById(Long id) {
 		return agentDao.findOne(id);
 	}
 

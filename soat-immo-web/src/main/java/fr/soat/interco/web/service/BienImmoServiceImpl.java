@@ -19,7 +19,7 @@ public class BienImmoServiceImpl implements BienImmoService {
     private BienImmoDao bienImmoDao;
 
     @Override
-    public List<Visite> findVisitsForBienImmo(Integer id) {
+    public List<Visite> findVisitsForBienImmo(Long id) {
         return bienImmoDao.findVisitsForBienImmo(id);
     }
 
@@ -51,7 +51,7 @@ public class BienImmoServiceImpl implements BienImmoService {
     }
 
     @Override
-    public BienImmobilier findBienImmoById(Integer idbienImmobiler) {
+    public BienImmobilier findBienImmoById(Long idbienImmobiler) {
         return bienImmoDao.findOne(idbienImmobiler);
     }
 }

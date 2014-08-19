@@ -17,7 +17,7 @@ public interface VisiteService {
      * @param id
      * @return
      */
-    public Visite findVisitById(Integer id);
+    public Visite findVisitById(Long id);
 
     /**
      * Returns all the visits.
@@ -30,14 +30,14 @@ public interface VisiteService {
      * @param id
      * @return
      */
-    public Client findClientForVisit(Integer id);
+    public Client findClientForVisit(Long id);
 
     /**
      *  Renvoie l'agent associé à cette visite.
      * @param id
      * @return
      */
-    public Agent findAgentForVisit(Integer id);
+    public Agent findAgentForVisit(Long id);
 
 
     /**
@@ -45,5 +45,5 @@ public interface VisiteService {
      * @param id
      * @return
      */
-    public BienImmobilier findBienImmoForVisit(Integer id);
+    public BienImmobilier findBienImmoForVisit(Long id);
 }

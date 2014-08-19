@@ -40,7 +40,7 @@ public interface AgentService {
      * @param id
      * @return
      */
-    public Agent findAgentById(Integer id);
+    public Agent findAgentById(Long id);
 
    
     /**

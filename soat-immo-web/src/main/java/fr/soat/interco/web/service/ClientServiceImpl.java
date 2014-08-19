@@ -33,7 +33,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client findClientById(Integer id) {
+    public Client findClientById(Long id) {
         return clientDao.findOne(id);
     }
 

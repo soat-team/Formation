@@ -18,7 +18,7 @@ public interface VisiteDao extends CrudRepository<Visite, Long> {
      * @return
      */
     @Query("select client from Visite v where v.idVisite = ?1")
-    public Client findClientForVisit(Integer id);
+    public Client findClientForVisit(Long id);
 
     /**
      * Renvoie l'agent associé à cette visite.
@@ -26,7 +26,7 @@ public interface VisiteDao extends CrudRepository<Visite, Long> {
      * @return
      */
     @Query("select agent from Visite v where v.idVisite = ?1")
-    public Agent findAgentForVisit(Integer id);
+    public Agent findAgentForVisit(Long id);
 
     /**
      * Renvoie le bien immobilier associé à cette visite.
@@ -34,7 +34,7 @@ public interface VisiteDao extends CrudRepository<Visite, Long> {
      * @return
      */
     @Query("select immobilier from Visite v where v.idVisite = ?1")
-    public BienImmobilier findBienImmoForVisit(Integer id);
+    public BienImmobilier findBienImmoForVisit(Long id);
 
 
 

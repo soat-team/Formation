@@ -38,7 +38,7 @@ public interface ClientService {
      * @param id
      * @return
      */
-    public Client findClientById(Integer id);
+    public Client findClientById(Long id);
 
     /**
      * Supprime un client de la base.
