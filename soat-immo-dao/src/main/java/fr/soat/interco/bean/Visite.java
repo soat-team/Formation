@@ -12,7 +12,7 @@ public class Visite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idVisite;
+    private Long idVisite;
 
     @ManyToOne
     @JoinColumn(name = "id_bien_immo", nullable = false)
@@ -29,11 +29,11 @@ public class Visite {
     @Embedded
     private Creneau creneau;
 
-    public Integer getIdVisite() {
+    public Long getIdVisite() {
         return idVisite;
     }
 
-    public void setIdVisite(Integer idVisite) {
+    public void setIdVisite(Long idVisite) {
         this.idVisite = idVisite;
     }
 

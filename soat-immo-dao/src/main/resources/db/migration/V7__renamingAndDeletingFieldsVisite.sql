@@ -1,7 +1,0 @@
-#Visite
-ALTER TABLE Visite DROP COLUMN heure_debut;
-ALTER TABLE Visite DROP COLUMN heure_fin;
-
-ALTER TABLE Visite ADD  dateVisite TIMESTAMP NULL;
-ALTER TABLE Visite ADD  heureDebut TIMESTAMP NULL ;
-ALTER TABLE Visite ADD  heureFin TIMESTAMP NULL ;

@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by formation on 08/08/14.
+ * Interface Dao pour les visites.
  */
-public interface VisiteDao extends CrudRepository<Visite, Integer> {
+public interface VisiteDao extends CrudRepository<Visite, Long> {
 
     /**
      * Renvoie le client associé à cette visite.

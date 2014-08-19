@@ -8,17 +8,21 @@ public class Agent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idAgent;
+    private Long idAgent;
     private String nom;
     private String prenom;
 
     @OneToMany(mappedBy = "agent", fetch = FetchType.LAZY)
     private List<Visite> visits;
 
-    public Integer getIdAgent() {
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+    public Long getIdAgent() {
         return idAgent;
     }
-    public void setIdAgent(Integer idAgent) {
+    public void setIdAgent(Long idAgent) {
         this.idAgent = idAgent;
     }
 
@@ -41,6 +45,13 @@ public class Agent {
     }
     public void setVisits(List<Visite> visits) {
         this.visits = visits;
+    }
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

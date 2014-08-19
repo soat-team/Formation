@@ -13,7 +13,7 @@ public class BienImmobilier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idBienImmo;
+    private Long idBien;
 
     @Enumerated(EnumType.STRING)
     private TypeImmo type;
@@ -48,15 +48,21 @@ public class BienImmobilier {
 
     private Boolean publishedSeLoger;
 
-    private String url_photo;
+    @OneToMany
+    @JoinTable(name = "BI_PHOTOS",
+            joinColumns = { @JoinColumn(name = "idBien", referencedColumnName = "idBien"),
+        @JoinColumn(name = "idPhoto", referencedColumnName = "idPhoto")})
+    private List<Photo> photos;
+
+    private String description;
 
 
-    public Integer getIdBienImmo() {
-        return idBienImmo;
+    public Long getIdBien() {
+        return idBien;
     }
 
-    public void setIdBienImmo(Integer idBienImmo) {
-        this.idBienImmo = idBienImmo;
+    public void setIdBien(Long idBien) {
+        this.idBien = idBien;
     }
 
     public TypeImmo getType() {
@@ -171,19 +177,27 @@ public class BienImmobilier {
         this.publishedSeLoger = publishedSeLoger;
     }
 
-    public String getUrl_photo() {
-        return url_photo;
-    }
-
-    public void setUrl_photo(String url_photo) {
-        this.url_photo = url_photo;
-    }
-
     public List<Visite> getVisits() {
         return visits;
     }
 
     public void setVisits(List<Visite> visits) {
         this.visits = visits;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 }

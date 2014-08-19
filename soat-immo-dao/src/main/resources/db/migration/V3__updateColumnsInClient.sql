@@ -1,1 +1,0 @@
-ALTER TABLE client CHANGE periode_essai  periodeEssai BOOLEAN NULL;

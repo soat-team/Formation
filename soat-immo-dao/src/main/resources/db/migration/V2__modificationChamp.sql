@@ -1,2 +1,0 @@
-ALTER TABLE client MODIFY salaire DOUBLE NULL;
-ALTER TABLE client MODIFY periode_essai BOOLEAN NULL;

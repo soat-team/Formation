@@ -14,14 +14,14 @@ import java.util.List;
  * Dao interface to BienImmo
  */
 @RepositoryRestResource(collectionResourceRel = "bien", path = "bien")
-public interface BienImmoDao extends PagingAndSortingRepository<BienImmobilier, Integer> {
+public interface BienImmoDao extends PagingAndSortingRepository<BienImmobilier, Long> {
 
     /**
      * Retrieves all the visits for a client.
      * @param id
      * @return
      */
-    @Query("select visits from BienImmobilier c where c.idBienImmo = ?1")
+    @Query("select visits from BienImmobilier c where c.idBien = ?1")
     public List<Visite> findVisitsForBienImmo(Integer id);
 
 

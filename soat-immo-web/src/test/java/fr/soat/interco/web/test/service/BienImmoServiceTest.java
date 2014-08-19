@@ -90,9 +90,9 @@ public class BienImmoServiceTest extends ParentTests {
 
         //test findBienImmoById
         bienImmobilier = bienImmoService
-                .findBienImmoById(bienImmobilier.getIdBienImmo());
+                .findBienImmoById(bienImmobilier.getIdBien());
         Assertions.assertThat(bienImmobilier).isNotNull();
-        Assertions.assertThat(bienImmobilier.getIdBienImmo()).isNotNull();
+        Assertions.assertThat(bienImmobilier.getIdBien()).isNotNull();
 
         //test findAllBienImmo
         Iterable<BienImmobilier> allBienImmo = bienImmoService.findAllBienImmo();
@@ -111,7 +111,7 @@ public class BienImmoServiceTest extends ParentTests {
         Assertions.assertThat(immoByType).hasSize(NB_BIEN_IMMO);
 
         //test delete bienImmo
-        Integer idbien_immobiler = bienImmobilier.getIdBienImmo();
+        Integer idbien_immobiler = bienImmobilier.getIdBien();
         bienImmoService.deleteBienImmo(bienImmobilier);
         BienImmobilier bienImmoById = bienImmoService.findBienImmoById(idbien_immobiler);
         Assertions.assertThat(bienImmoById).isNull();

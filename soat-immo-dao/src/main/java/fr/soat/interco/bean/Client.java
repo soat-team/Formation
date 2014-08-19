@@ -1,5 +1,8 @@
 package fr.soat.interco.bean;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -12,23 +15,31 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idclient;
+    private Long idclient;
 
     private String nom;
     private String prenom;
-    private Date dateNaissance;
-    private Double salaire;
-    private boolean periodEssai;
 
+    @Column
+    @Type(type="org.joda.time.contrib.hibernate.PersistentLocalDate")
+    private LocalDate dateNaissance;
+
+    private Double salaire;
+
+    private boolean periodEssai;
 
     @OneToMany(mappedBy = "client")
     private List<Visite> visits;
 
-    public Integer getIdclient() {
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+    public Long getIdclient() {
         return idclient;
     }
 
-    public void setIdclient(Integer idclient) {
+    public void setIdclient(Long idclient) {
         this.idclient = idclient;
     }
 
@@ -64,13 +75,6 @@ public class Client {
         this.periodEssai = periodEssai;
     }
 
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
 
     public List<Visite> getVisits() {
         return visits;
@@ -78,6 +82,22 @@ public class Client {
 
     public void setVisits(List<Visite> visits) {
         this.visits = visits;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(LocalDate dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -102,15 +122,4 @@ public class Client {
         return result;
     }
 
-    /**
-     *
-     * @return always the name
-     */
-    public String getFullname() {
-        if(nom == null) {
-            return prenom;
-        } else {
-            return prenom +" "+ nom;
-        }
-    }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Dao pour accéder aux agents.
  */
-public interface AgentDao extends PagingAndSortingRepository<Agent, Integer> {
+public interface AgentDao extends PagingAndSortingRepository<Agent, Long> {
 	
 	 @Query("from Agent a where a.nom = ?1 and a.prenom = ?2")
 	 public Agent findAgentByNomAndPrenom(String nom, String prenom);
@@ -20,6 +20,6 @@ public interface AgentDao extends PagingAndSortingRepository<Agent, Integer> {
      * @param id
      * @return
      */
-    @Query("select visits from Agent a where a.id = ?1")
-     public List<Visite> findVisitsForAgent(Integer id);
+    @Query("select visits from Agent a where a.idAgent = ?1")
+     public List<Visite> findVisitsForAgent(Long id);
 }

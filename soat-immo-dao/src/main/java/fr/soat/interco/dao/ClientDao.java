@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Interface de Dao pour accéder aux clients
  */
-public interface ClientDao extends PagingAndSortingRepository<Client, Integer> {
+public interface ClientDao extends PagingAndSortingRepository<Client, Long> {
 
     /**
      * Permet de retrouver un client par son et prenom
@@ -29,6 +29,6 @@ public interface ClientDao extends PagingAndSortingRepository<Client, Integer> {
      * @param id
      * @return
      */
-    @Query("select visits from Client c where c.id = ?1")
+    @Query("select visits from Client c where c.idclient = ?1")
     public List<Visite> findVisitsForAgent(Integer id);
 }

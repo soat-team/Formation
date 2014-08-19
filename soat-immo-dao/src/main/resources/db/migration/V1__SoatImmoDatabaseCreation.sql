@@ -1,62 +1,82 @@
-CREATE SCHEMA IF NOT EXISTS `SoatImmo` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+CREATE TABLE Photo(
+  idPhoto BIGINT NOT NULL,
+  photoUrl VARCHAR(128),
+  PRIMARY KEY (idPhoto)
+);
+
+CREATE TABLE USER(
+  idUser BIGINT NOT NULL,
+  login VARCHAR(16),
+  password VARCHAR(40),
+  PRIMARY KEY (idUser)
+);
+
+CREATE TABLE Agent(
+  idAgent BIGINT NOT NULL,
+  nom VARCHAR(32),
+  prenom VARCHAR(32),
+  userId BIGINT NOT NULL,
+
+  PRIMARY KEY (idagent),
+  FOREIGN KEY (userId) REFERENCES USER(idUser)
+);
+
+CREATE TABLE Client(
+  idclient BIGINT NOT NULL,
+  nom VARCHAR (32),
+  prenom VARCHAR(32),
+  dateNaissance  TIMESTAMP NULL,
+  salaire DOUBLE NULL,
+  periodEssai tinyint(1) NULL,
+  userId BIGINT NOT NULL,
+
+  PRIMARY KEY (idclient),
+  FOREIGN KEY (userId) REFERENCES USER(idUser)
+);
+
+CREATE TABLE BienImmobilier(
+  idBien BIGINT NOT NULL,
+  type VARCHAR (8),
+  adresse VARCHAR(32) NULL,
+  surface VARCHAR(8) NULL,
+  nbPieces smallint NULL,
+  etage smallint NULL,
+  ascenseur tinyint(1) NULL,
+  typeChauffage VARCHAR(16),
+  typeProdEauChaude VARCHAR(16),
+  loyer DOUBLE NULL,
+  charges DOUBLE NULL,
+  dateDisponibilite TIMESTAMP NULL,
+  active tinyint(1) NULL,
+  published tinyint(1) NULL,
+  publishedSeLoger tinyint(1),
+  description TEXT ,
+
+  PRIMARY KEY (idBien)
+);
+
+CREATE TABLE BI_PHOTOS(
+  idBien BIGINT NOT NULL,
+  idPhoto BIGINT NOT NULL,
+
+  FOREIGN KEY (idBien) REFERENCES BienImmobilier(idBien),
+  FOREIGN KEY (idPhoto) REFERENCES Photo(idPhoto)
+);
+
+CREATE TABLE Visite(
+  idVisite BIGINT NOT NULL PRIMARY KEY ,
+  id_bien_immo BIGINT NOT NULL,
+  id_agent BIGINT NOT NULL,
+  id_client BIGINT NOT NULL,
+  dateVisite TIMESTAMP NOT NULL ,
+  heureDebut TIMESTAMP NOT NULL,
+  heureFin TIMESTAMP NOT NULL,
+
+  FOREIGN KEY (id_bien_immo) REFERENCES BienImmobilier(idBien),
+  FOREIGN KEY (id_agent) REFERENCES Agent(idAgent),
+  FOREIGN KEY (id_client) REFERENCES Client(idclient)
+);
+
+COMMIT;
 
 
-CREATE TABLE IF NOT EXISTS `SoatImmo`.`bien_immobilier` (
-  `idbien_immobilier` INT NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(45) NULL,
-  `adresse` VARCHAR(100) NULL,
-  `surface` VARCHAR(45) NULL,
-  `nb_pieces` INT NULL,
-  `etage` INT NULL,
-  `ascenseur` TINYINT(1) NULL,
-  `type_chauffage` VARCHAR(45) NULL,
-  `type_production_eau_chaude` VARCHAR(45) NULL,
-  `loyer` DOUBLE NULL,
-  `charges` DOUBLE NULL,
-  `date_disponibilite` DATETIME NULL,
-  `annonce_active` TINYINT(1) NULL,
-  `publication_site_web` TINYINT(1) NULL,
-  `publication_seLoger` TINYINT(1) NULL,
-  `url_photo` VARCHAR(45) NULL,
-  PRIMARY KEY (`idbien_immobilier`))
-  ENGINE = InnoDB;
-
-
-  CREATE TABLE IF NOT EXISTS `SoatImmo`.`client` (
-  `idclient` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NULL,
-  `prenom` VARCHAR(45) NULL,
-  `date_de_naissance` DATETIME NULL,
-  `salaire` VARCHAR(45) NULL,
-  `periode_essai` TINYINT(1) NULL,
-  `criteres_recherche` VARCHAR(100) NULL,
-  PRIMARY KEY (`idclient`))
-ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `SoatImmo`.`agent` (
-  `idagent` INT NOT NULL,
-  `nom` VARCHAR(45) NOT NULL,
-  `prenom` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idagent`))
-  ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `SoatImmo`.`visite` (
-  `idvisite` INT NOT NULL,
-  `heure_debut` DATETIME NOT NULL,
-  `heure_fin` DATETIME NOT NULL,
-  `id_agent` INT NOT NULL,
-  `id_bien_immo` INT NOT NULL,
-  PRIMARY KEY (`idvisite`),
-  INDEX `id_agent_idx` (`id_agent` ASC),
-  INDEX `id_bien_immobilier_idx` (`id_bien_immo` ASC),
-  CONSTRAINT `id_agent`
-    FOREIGN KEY (`id_agent`)
-    REFERENCES `SoatImmo`.`agent` (`idagent`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `id_bien_immobilier`
-    FOREIGN KEY (`id_bien_immo`)
-    REFERENCES `SoatImmo`.`bien_immobilier` (`idbien_immobilier`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;

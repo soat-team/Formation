@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee"
-         id="WebApp_ID" version="2.5">
+         idPhoto="WebApp_ID" version="2.5">
 
     <display-name>soat-immo-web</display-name>
     <!--
