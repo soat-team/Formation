@@ -1,5 +1,6 @@
 package fr.soat.interco.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.LocalDate;
 
 import javax.persistence.*;
@@ -44,14 +45,16 @@ public class BienImmobilier {
 
     private Boolean active;
 
+    @JsonIgnore
     private Boolean published;
 
+    @JsonIgnore
     private Boolean publishedSeLoger;
 
     @OneToMany
     @JoinTable(name = "BI_PHOTOS",
-            joinColumns = { @JoinColumn(name = "idBien", referencedColumnName = "idBien"),
-        @JoinColumn(name = "idPhoto", referencedColumnName = "idPhoto")})
+            joinColumns = { @JoinColumn(name = "idBien", referencedColumnName = "idBien")},
+            inverseJoinColumns = {@JoinColumn(name = "idPhoto")})
     private List<Photo> photos;
 
     private String description;

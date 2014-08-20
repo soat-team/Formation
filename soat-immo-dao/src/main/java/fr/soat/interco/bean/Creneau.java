@@ -16,11 +16,11 @@ import javax.persistence.Embeddable;
 public class Creneau {
 
     @Column
-    @Type(type="org.joda.time.contrib.hibernate.PersistentLocalDate")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDate dateVisite;
 
     @Columns(columns={@Column(name="heureDebut"),@Column(name="heureFin")})
-    @Type(type="org.joda.time.contrib.hibernate.PersistentInterval")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentInterval")
     private Interval duration;
 
     public LocalDate getDateVisite() {

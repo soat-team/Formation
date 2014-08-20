@@ -1,5 +1,7 @@
 package fr.soat.interco.bean;
 
+import com.fluentinterface.ReflectionBuilder;
+import com.fluentinterface.builder.Builder;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
@@ -21,7 +23,7 @@ public class Client {
     private String prenom;
 
     @Column
-    @Type(type="org.joda.time.contrib.hibernate.PersistentLocalDate")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDate dateNaissance;
 
     private Double salaire;
@@ -120,6 +122,21 @@ public class Client {
         result = 31 * result + (nom != null ? nom.hashCode() : 0);
         result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
         return result;
+    }
+
+    public static interface ClientBuilder extends Builder<Client> {
+        ClientBuilder withNom(String nom);
+        ClientBuilder withPrenom(String prenom);
+        ClientBuilder withUser(User user);
+        ClientBuilder havingVisits(Visite... visites);
+    }
+
+    /**
+     * Returns a new builder for this class.
+     * @return
+     */
+    public static ClientBuilder create(){
+        return ReflectionBuilder.implementationFor(ClientBuilder.class).create();
     }
 
 }

@@ -36,6 +36,10 @@ public class PersistenceConfig extends AbstractConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("jadira.usertype.autoRegisterUserTypes", "true");
+        properties.setProperty("jadira.usertype.databaseZone", "jvm");
+        properties.setProperty("jadira.usertype.javaZone", "jvm");
+
         //properties.setProperty("hibernate.ejb.naming_strategy", "fr.soat.interco.config.utils.CustomNamingStrategy");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.show_sql", "true");

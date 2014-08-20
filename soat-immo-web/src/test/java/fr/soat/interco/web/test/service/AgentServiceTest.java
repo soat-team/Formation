@@ -65,7 +65,7 @@ public class AgentServiceTest extends ParentTests {
         Assertions.assertThat(agentByNomAndPrenom.getIdAgent()).isNotNull();
 
         //test findAgentById
-        Agent agentById = agentService.findAgentById(Integer.valueOf(randomId));
+        Agent agentById = agentService.findAgentById(Long.valueOf(randomId));
         Assertions.assertThat(agentById).isNotNull();
         Assertions.assertThat(agentById.getNom()).isEqualTo(AGENT_NAME+(randomId-1));
         Assertions.assertThat(agentById.getPrenom()).isEqualTo(AGENT_FNAME + (randomId-1));
@@ -73,7 +73,7 @@ public class AgentServiceTest extends ParentTests {
 
 
         //test deleteAgent
-        Integer idAgent = agentById.getIdAgent();
+        Long idAgent = agentById.getIdAgent();
         agentService.deleteAgent(agentById);
         Agent agentById1 = agentService.findAgentById(idAgent);
         Assertions.assertThat(agentById1).isNull();

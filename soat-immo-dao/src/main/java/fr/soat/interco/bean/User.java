@@ -1,5 +1,9 @@
 package fr.soat.interco.bean;
 
+import com.fluentinterface.ReflectionBuilder;
+import com.fluentinterface.builder.Builder;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -7,6 +11,7 @@ import javax.persistence.Id;
 /**
  * Created by formation on 18/08/14.
  */
+@Entity
 public class User {
 
     @Id
@@ -37,6 +42,20 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static interface UserBuilder extends Builder<User> {
+        UserBuilder withLogin(String login);
+        UserBuilder withPassword(String password);
+    }
+
+
+    /**
+     *
+     * @return
+     */
+    public  static UserBuilder create(){
+        return ReflectionBuilder.implementationFor(UserBuilder.class).create();
     }
 
     @Override

@@ -67,7 +67,7 @@ public class ClientServiceTest extends ParentTests {
         Assertions.assertThat(clientByNomAndPrenom.getIdclient()).isNotNull();
 
         //test findAgentById
-        Client clientById = clientService.findClientById(Integer.valueOf(randomId));
+        Client clientById = clientService.findClientById(Long.valueOf(randomId));
         Assertions.assertThat(clientById).isNotNull();
         Assertions.assertThat(clientById.getNom()).isEqualTo(AGENT_NAME + (randomId - 1));
         Assertions.assertThat(clientById.getPrenom()).isEqualTo(AGENT_FNAME + (randomId - 1));
@@ -75,7 +75,7 @@ public class ClientServiceTest extends ParentTests {
 
 
         //test deleteAgent
-        Integer idclient = clientById.getIdclient();
+        Long idclient = clientById.getIdclient();
         clientService.deleteClient(clientById);
         Client clientById1 = clientService.findClientById(idclient);
         Assertions.assertThat(clientById1).isNull();

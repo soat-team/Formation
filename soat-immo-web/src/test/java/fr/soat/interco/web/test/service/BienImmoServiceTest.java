@@ -111,7 +111,7 @@ public class BienImmoServiceTest extends ParentTests {
         Assertions.assertThat(immoByType).hasSize(NB_BIEN_IMMO);
 
         //test delete bienImmo
-        Integer idbien_immobiler = bienImmobilier.getIdBien();
+        Long idbien_immobiler = bienImmobilier.getIdBien();
         bienImmoService.deleteBienImmo(bienImmobilier);
         BienImmobilier bienImmoById = bienImmoService.findBienImmoById(idbien_immobiler);
         Assertions.assertThat(bienImmoById).isNull();

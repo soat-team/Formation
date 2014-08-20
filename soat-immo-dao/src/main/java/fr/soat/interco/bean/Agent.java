@@ -1,5 +1,8 @@
 package fr.soat.interco.bean;
 
+import com.fluentinterface.ReflectionBuilder;
+import com.fluentinterface.builder.Builder;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -74,5 +77,21 @@ public class Agent {
         result = 31 * result + nom.hashCode();
         result = 31 * result + prenom.hashCode();
         return result;
+    }
+
+
+    public static interface AgentBuilder extends Builder<Agent> {
+        AgentBuilder withNom(String nom);
+        AgentBuilder withPrenom(String prenom);
+        AgentBuilder withUser(User user);
+        AgentBuilder havingVisits(Visite... visites);
+    }
+
+    /**
+     * Returns a new builder for this class.
+     * @return
+     */
+    public static AgentBuilder create(){
+        return ReflectionBuilder.implementationFor(AgentBuilder.class).create();
     }
 }
