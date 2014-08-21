@@ -20,8 +20,8 @@ public interface ClientDao extends PagingAndSortingRepository<Client, Long> {
      * @param prenom le prenom du client
      * @return le client associé.
      */
-    @Query("from Client c where c.nom = ?1 and c.prenom = ?2")
-    public Client findClientByNomAndPrenom(String nom, String prenom);
+    @Query("from Client c where c.nom like %?1% or c.prenom like %?2%")
+    public List<Client> findClientByNomAndPrenom(String nom, String prenom);
 
 
     /**

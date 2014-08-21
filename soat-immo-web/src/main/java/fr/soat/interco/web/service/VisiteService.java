@@ -46,4 +46,13 @@ public interface VisiteService {
      * @return
      */
     public BienImmobilier findBienImmoForVisit(Long id);
+
+    /**
+     * Finds the visit for the specified client.
+     * @param idClient
+     * @return
+     */
+    public Visite findVisiteForClient(Long idClient, Long idVisite);
+
+
 }

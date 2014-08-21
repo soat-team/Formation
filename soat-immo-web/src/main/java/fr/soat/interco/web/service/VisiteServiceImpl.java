@@ -41,4 +41,9 @@ public class VisiteServiceImpl implements VisiteService {
     public BienImmobilier findBienImmoForVisit(Long id) {
         return visiteDao.findBienImmoForVisit(id);
     }
+
+    @Override
+    public Visite findVisiteForClient(Long idClient, Long idVisite) {
+        return  visiteDao.findVisiteForClient(idClient, idVisite);
+    }
 }

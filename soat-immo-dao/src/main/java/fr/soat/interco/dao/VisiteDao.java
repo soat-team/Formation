@@ -37,6 +37,34 @@ public interface VisiteDao extends CrudRepository<Visite, Long> {
     public BienImmobilier findBienImmoForVisit(Long id);
 
 
+    /**
+     * Retursn the specified visit for the client.
+     * @param idClient
+     * @return
+     */
+    @Query("select v from Visite v where v.id_client = ?1 and v.idVisite = ?2")
+    public Visite findVisiteForClient(Long idClient, Long idVisite);
+
+
+    /**
+     *
+     * @param idAgent
+     * @param idVisite
+     * @return
+     */
+    @Query("select v from Visite v where v.id_agent = ?1 and v.idVisite = ?2")
+    public Visite findVisiteForAgent(Long idAgent, Long idVisite);
+
+
+    /**
+     *
+     * @param id_bien_immo
+     * @param idVisite
+     * @return
+     */
+    @Query("select v from Visite v v.id_bien_immo = ?1 and v.idVisite = ?2")
+    public Visite findVisiteForBI(Long id_bien_immo, Long idVisite);
+
 
 
 }

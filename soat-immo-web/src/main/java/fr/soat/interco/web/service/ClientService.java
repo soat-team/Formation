@@ -1,6 +1,7 @@
 package fr.soat.interco.web.service;
 
 import fr.soat.interco.bean.Client;
+import fr.soat.interco.bean.Visite;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface ClientService {
      * @param prenom
      * @return
      */
-    public Client findClientByNomAndPrenom(String nom, String prenom);
+    public  List<Client> findClientByNomAndPrenom(String nom, String prenom);
 
 
     /**
@@ -45,4 +46,12 @@ public interface ClientService {
      * @param client
      */
     public void deleteClient(Client client);
+
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<Visite> getVisitsForClient(Long id);
 }

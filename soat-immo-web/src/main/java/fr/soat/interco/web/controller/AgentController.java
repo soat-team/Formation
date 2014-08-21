@@ -1,11 +1,10 @@
 package fr.soat.interco.web.controller;
 
-import fr.soat.interco.bean.Client;
+import fr.soat.interco.bean.Agent;
 import fr.soat.interco.bean.Visite;
 import fr.soat.interco.dao.VisiteDao;
-import fr.soat.interco.web.service.ClientService;
+import fr.soat.interco.web.service.AgentService;
 import fr.soat.interco.web.service.UserService;
-import fr.soat.interco.web.service.VisiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +14,13 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Client Controller.
+ * Created by formation on 21/08/14.
  */
 @Controller
-public class ClientController {
+public class AgentController {
 
     @Autowired
-    private ClientService clientService;
+    private AgentService agentService;
 
     @Autowired
     private UserService userService;
@@ -29,15 +28,14 @@ public class ClientController {
     @Autowired
     private VisiteDao visiteDao;
 
-
     /**
      * This method retrieves all the clients in the database.
      * But only an admin can access to all the client.
      */
-    @RequestMapping(value = "/soat/immo/clients")
+    @RequestMapping(value = "/soat/immo/agents")
     @ResponseBody
-    public Iterable<Client> getAllClients() {
-        Iterable<Client> allClients = clientService.findAllClients();
+    public Iterable<Agent> getAllClients() {
+        Iterable<Agent> allClients = agentService.findAllAgents();
         return allClients;
     }
 
@@ -47,14 +45,15 @@ public class ClientController {
      * with the current url. If it's an agent, it access the profile information
      * of the client
      *
-     * @param idClient the id of the client.
+     * @param idAgent the id of the client.
      * @return the client for the specified id.
      */
-    @RequestMapping(value = "/soat/immo/clients/{idClient}")
+    @RequestMapping(value = "/soat/immo/agents/{idAgent}")
     @ResponseBody
-    public Client getClient(@PathVariable("idClient") Long idClient) {
-        return clientService.findClientById(idClient);
+    public Agent getClient(@PathVariable("idAgent") Long idAgent) {
+        return agentService.findAgentById(idAgent);
     }
+
 
 
     /**
@@ -63,13 +62,13 @@ public class ClientController {
      * @param password
      * @param response
      * @return
-     * @throws IOException
+     * @throws java.io.IOException
      */
-    @RequestMapping(value = "/soat/immot/clients/auth", method = RequestMethod.GET)
+    @RequestMapping(value = "/soat/immot/agents/auth", method = RequestMethod.GET)
     @ResponseBody
-    public Client authenticateClient(@RequestParam("login") String login,
+    public Agent authenticateClient(@RequestParam("login") String login,
                                      @RequestParam("login") String password, HttpServletResponse response) throws IOException {
-        Client client = userService.authenticateClient(login, password);
+        Agent client = userService.authenticateAgent(login, password);
         if (client == null) {
             response.setContentType("application/json");
             response.sendError(404, "client not found");
@@ -81,25 +80,25 @@ public class ClientController {
 
     /**
      *
-     * @param idClient
+     * @param idAgent
      * @return
      */
-    @RequestMapping(value = "/soat/immo/clients/{idClient}/visits")
+    @RequestMapping(value = "/soat/immo/agents/{idAgent}/visits")
     @ResponseBody
-    public List<Visite> findVisitsForClient(@PathVariable("idClient") Long idClient){
-        Client client = clientService.findClientById(idClient);
-        return client.getVisits();
+    public List<Visite> findVisitsForClient(@PathVariable("idAgent") Long idAgent){
+        Agent agent = agentService.findAgentById(idAgent);
+        return agent.getVisits();
     }
 
     /**
      *
-     * @param idClient
+     * @param idAgent
      * @param idVisite
      * @return
      */
-    @RequestMapping(value = "/soat/immo/clients/{idClient}/visits/{idVisite}")
+    @RequestMapping(value = "/soat/immo/clients/{idAgent}/visits/{idVisite}")
     @ResponseBody
-    public Visite getVisitForClient(@PathVariable("idClient") Long idClient, @PathVariable("idVisite") Long idVisite){
-        return visiteDao.findVisiteForClient(idClient,idVisite);
+    public Visite getVisitForClient(@PathVariable("idAgent") Long idAgent, @PathVariable("idVisite") Long idVisite){
+        return visiteDao.findVisiteForAgent(idAgent,idVisite);
     }
 }

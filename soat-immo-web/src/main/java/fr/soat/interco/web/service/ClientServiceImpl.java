@@ -1,6 +1,7 @@
 package fr.soat.interco.web.service;
 
 import fr.soat.interco.bean.Client;
+import fr.soat.interco.bean.Visite;
 import fr.soat.interco.dao.ClientDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class ClientServiceImpl implements ClientService {
     private ClientDao clientDao;
 
     @Override
-    public Client findClientByNomAndPrenom(String nom, String prenom) {
+    public  List<Client> findClientByNomAndPrenom(String nom, String prenom) {
         return clientDao.findClientByNomAndPrenom(nom, prenom);
     }
 
@@ -40,5 +41,11 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void deleteClient(Client client) {
         clientDao.delete(client);
+    }
+
+    @Override
+    public List<Visite> getVisitsForClient(Long id) {
+        Client client = clientDao.findOne(id);
+        return client.getVisits();
     }
 }
